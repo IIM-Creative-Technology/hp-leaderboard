@@ -109,48 +109,25 @@ export default {
 
 
 <style>
-:root {
-  --color-white: #ffffff;
-  --color-light: #f1f5f9;
-  --color-black: #121212;
-  --color-night: #001632;
-  --color-red: #f44336;
-  --color-blue: #1a73e8;
-  --color-gray: #80868b;
-  --color-grayish: #dadce0;
-  --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-  	0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-  	0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-  	0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-*,
-*::before,
-*::after {
-	padding: 0;
-	margin: 0;
-}
 
 .signUpMain {
   display: flex;
   height: 100vh;
   margin: auto;
   align-items: center;
-  background: #242424;
+  background: var(--color-light);
 }
 
 .signUpMain .signUpBlock {
   width: 60vw;
   height: 250px;
   margin: auto;
-  background: #111212;
+  background: var(--color-dark);
   display: flex;
   justify-content: space-between;
   padding: 10vh 5vw;
   position: relative;
-  border-radius: 2rem;
+  border-radius: var(--radius);
 }
 
 .signUpMain .signUpBlock svg {
@@ -160,8 +137,12 @@ export default {
   cursor: pointer;
 }
 
+.signUpMain .signUpBlock svg:hover {
+  fill: antiquewhite;
+}
+
 .signUpMain .signUpBlock img {
-  border-radius: 2rem;
+  border-radius: var(--radius);
 }
 
 .signUpMain .signUpBlock .signUpForm {
@@ -175,7 +156,7 @@ export default {
 .signUpMain .signUpBlock input {
   height: 7vh;
   margin-bottom: 5vh;
-  border-radius: 2rem;
+  border-radius: var(--radius);
   border: none;
   background: #f1f5f9;
   padding-left: 2rem;
@@ -184,7 +165,7 @@ export default {
 .signUpMain .signUpBlock button {
   width: 50%;
   margin: auto;
-  border-radius: 2rem;
+  border-radius: var(--radius);
   height: 7vh;
   cursor: pointer;
 }

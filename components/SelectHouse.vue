@@ -27,7 +27,7 @@ export default {
         height: 100vh;
         margin: auto;
         align-items: center;
-        background: #242424;
+        background: var(--color-light);
     }
 
     .selectHouseMain div {
@@ -39,12 +39,12 @@ export default {
 
     .selectHouseMain img {
         width: 20vw;
-        border-radius: 2rem;
+        border-radius: var(--radius);
         cursor: pointer;
     }
 
     .opacity {
-        opacity: 50% !important;
+        opacity: 15% !important;
         transition: 0.6s;
     }
 
