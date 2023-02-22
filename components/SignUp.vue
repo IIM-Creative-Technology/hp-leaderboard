@@ -20,270 +20,65 @@
         </form>
     </div> -->
 
-  <main class="main">
-    <div class="container">
-      <section class="wrapper">
-        <div class="heading">
-          <h1 class="text text-large">Sign Up</h1>
-        </div>
-        <form @submit="register()" enctype="multipart/form-data" method="post" name="signin" class="form">
+        <!-- <form @submit="register()" enctype="multipart/form-data" method="post" name="signin" class="form">
           <div class="input-control">
             <label for="name" class="input-label" hidden>Nickname</label>
-            <input type="text" name="name" id="nickname" v-model="name" class="input-field" placeholder="Nickname">
+            <input type="text" id="nickname" v-model="name" :class="{error : error === 'name'}" class="input-field" placeholder="Nickname">
           </div>
           <div class="input-control">
             <label for="password" class="input-label" hidden>Password</label>
-            <input type="password" name="password" v-model="password" id="password" class="input-field" placeholder="Password">
+            <input type="password" v-model="password" id="password" class="input-field" placeholder="Password">
+          </div>
+          <div class="input-control">
+            <div class="select" :class="{houseSelected : houseId === 1, houseUnselected : houseId !== null && houseId !== 1}" @click="houseId === 1 ? houseId = null : houseId = 1"><img src="../static/assets/snake.png"></div>
+            <div class="select" :class="{houseSelected : houseId === 2, houseUnselected : houseId !== null && houseId !== 2}" @click="houseId === 2 ? houseId = null : houseId = 2"><img src="../static/assets/lion.png"></div>
+          </div>
+          <div class="input-control">
+            <div class="select" :class="{houseSelected : houseId === 3, houseUnselected : houseId !== null && houseId !== 3}" @click="houseId === 3 ? houseId = null : houseId = 3"><img src="../static/assets/badger.png"></div>
+            <div class="select" :class="{houseSelected : houseId === 4, houseUnselected : houseId !== null && houseId !== 4}" @click="houseId === 4 ? houseId = null : houseId = 4"><img src="../static/assets/eagle.png"></div>
           </div>
           <div class="input-control">
             <button type="button" class="input-submit" style="margin: auto;" @click="register()">Sign Up</button>
           </div>
-        </form>
-      </section>
+        </form> -->
+
+  <main class="signUpMain">
+    <div class="signUpBlock">
+      <svg fill="#242424" @click="$emit('select', null)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        width="50px" height="50px" viewBox="0 0 299.021 299.021"
+        xml:space="preserve">
+        <g>
+          <g>
+            <path d="M292.866,254.432c-2.288,0-4.443-1.285-5.5-3.399c-0.354-0.684-28.541-52.949-146.169-54.727v51.977
+              c0,2.342-1.333,4.48-3.432,5.513c-2.096,1.033-4.594,0.793-6.461-0.63L2.417,154.392C0.898,153.227,0,151.425,0,149.516
+              c0-1.919,0.898-3.72,2.417-4.888l128.893-98.77c1.87-1.426,4.365-1.667,6.461-0.639c2.099,1.026,3.432,3.173,3.432,5.509v54.776
+              c3.111-0.198,7.164-0.37,11.947-0.37c43.861,0,145.871,13.952,145.871,143.136c0,2.858-1.964,5.344-4.75,5.993
+              C293.802,254.384,293.34,254.432,292.866,254.432z"/>
+          </g>
+        </g>
+      </svg>
+      <img v-if="houseId === 1" src="../static/assets/snake.png" alt="">
+      <img v-if="houseId === 2" src="../static/assets/eagle.png" alt="">
+      <img v-if="houseId === 3" src="../static/assets/badger.png" alt="">
+      <img v-if="houseId === 4" src="../static/assets/lion.png" alt="">
+      <div class="signUpForm">
+        <input type="text" placeholder="Nickname" v-model="name">
+        <input type="password" placeholder="Password" v-model="password">
+        <button @click="register()">Sign Up</button>
+      </div>
     </div>
   </main>
 
 </template>
 
-<style>
-  :root {
-  --color-white: #ffffff;
-  --color-light: #f1f5f9;
-  --color-black: #121212;
-  --color-night: #001632;
-  --color-red: #f44336;
-  --color-blue: #1a73e8;
-  --color-gray: #80868b;
-  --color-grayish: #dadce0;
-  --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-  	0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-  	0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-  	0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-html {
-  font-size: 100%;
-  font-size-adjust: 100%;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: inherit;
-  list-style: none;
-  list-style-type: none;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-  line-height: 1.5;
-  color: var(--color-black);
-  background: var(--color-light);
-}
-
-a,
-button {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 80rem;
-  min-height: 100vh;
-  width: 100%;
-  padding: 0 2rem;
-  margin: 0 auto;
-}
-
-.ion-logo-apple {
-  font-size: 1.65rem;
-  line-height: inherit;
-  margin-right: 0.5rem;
-  color: var(--color-black);
-}
-.ion-logo-google {
-  font-size: 1.65rem;
-  line-height: inherit;
-  margin-right: 0.5rem;
-  color: var(--color-red);
-}
-.ion-logo-facebook {
-  font-size: 1.65rem;
-  line-height: inherit;
-  margin-right: 0.5rem;
-  color: var(--color-blue);
-}
-
-.text {
-  font-family: inherit;
-  line-height: inherit;
-  text-transform: unset;
-  text-rendering: optimizeLegibility;
-}
-.text-large {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--color-black);
-}
-.text-normal {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-black);
-}
-.text-links {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-blue);
-}
-.text-links:hover {
-  text-decoration: underline;
-}
-
-.main .wrapper {
-  max-width: 28rem;
-  width: 100%;
-  margin: 2rem auto;
-  padding: 2rem 2.5rem;
-  border: none;
-  outline: none;
-  border-radius: 0.25rem;
-  color: var(--color-black);
-  background: var(--color-white);
-  box-shadow: var(--shadow-large);
-}
-.main .wrapper .form {
-  width: 100%;
-  height: auto;
-  margin-top: 2rem;
-}
-.main .wrapper .form .input-control {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-.main .wrapper .form .input-field {
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: inherit;
-  width: 100%;
-  height: auto;
-  padding: 0.75rem 1.25rem;
-  border: none;
-  outline: none;
-  border-radius: 2rem;
-  color: var(--color-black);
-  background: var(--color-light);
-  text-transform: unset;
-  text-rendering: optimizeLegibility;
-}
-.main .wrapper .form .input-submit {
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: inherit;
-  cursor: pointer;
-  min-width: 40%;
-  height: auto;
-  padding: 0.65rem 1.25rem;
-  border: none;
-  outline: none;
-  border-radius: 2rem;
-  color: var(--color-white);
-  background: var(--color-blue);
-  box-shadow: var(--shadow-medium);
-  text-transform: capitalize;
-  text-rendering: optimizeLegibility;
-}
-.main .wrapper .striped {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-}
-.main .wrapper .striped-line {
-  flex: auto;
-  flex-basis: auto;
-  border: none;
-  outline: none;
-  height: 2px;
-  background: var(--color-grayish);
-}
-.main .wrapper .striped-text {
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: inherit;
-  color: var(--color-black);
-  margin: 0 1rem;
-}
-.main .wrapper .method-control {
-  margin-bottom: 1rem;
-}
-.main .wrapper .method-action {
-  font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  padding: 0.35rem 1.25rem;
-  outline: none;
-  border: 2px solid var(--color-grayish);
-  border-radius: 2rem;
-  color: var(--color-black);
-  background: var(--color-white);
-  text-transform: capitalize;
-  text-rendering: optimizeLegibility;
-  transition: all 0.35s ease;
-}
-.main .wrapper .method-action:hover {
-  background: var(--color-light);
-}
-</style>
-
 <script>
 import axios from 'axios'
 export default {
+  props: ['houseId'],
   data() {
     return {
-      name: '',
-      password: '',
-      error: null,
+      name: null,
+      password: null,
     }
   },
 
@@ -292,7 +87,9 @@ export default {
       const data = {
         name: this.name,
         password: this.password,
+        houseId: this.houseId,
       }
+      // if(!this.name) {  this.error = "name"; return }
       axios
         .post('https://hp-api-iim.azurewebsites.net/auth/register', data)
         .then((res) => {
@@ -309,3 +106,87 @@ export default {
   },
 }
 </script>
+
+
+<style>
+:root {
+  --color-white: #ffffff;
+  --color-light: #f1f5f9;
+  --color-black: #121212;
+  --color-night: #001632;
+  --color-red: #f44336;
+  --color-blue: #1a73e8;
+  --color-gray: #80868b;
+  --color-grayish: #dadce0;
+  --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  	0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  	0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  	0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+}
+
+.signUpMain {
+  display: flex;
+  height: 100vh;
+  margin: auto;
+  align-items: center;
+  background: #242424;
+}
+
+.signUpMain .signUpBlock {
+  width: 60vw;
+  height: 250px;
+  margin: auto;
+  background: #111212;
+  display: flex;
+  justify-content: space-between;
+  padding: 10vh 5vw;
+  position: relative;
+  border-radius: 2rem;
+}
+
+.signUpMain .signUpBlock svg {
+  position: absolute;
+  top: 1vh;
+  left: 5vw;
+  cursor: pointer;
+}
+
+.signUpMain .signUpBlock img {
+  border-radius: 2rem;
+}
+
+.signUpMain .signUpBlock .signUpForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+
+.signUpMain .signUpBlock input {
+  height: 7vh;
+  margin-bottom: 5vh;
+  border-radius: 2rem;
+  border: none;
+  background: #f1f5f9;
+  padding-left: 2rem;
+}
+
+.signUpMain .signUpBlock button {
+  width: 50%;
+  margin: auto;
+  border-radius: 2rem;
+  height: 7vh;
+  cursor: pointer;
+}
+
+</style>
