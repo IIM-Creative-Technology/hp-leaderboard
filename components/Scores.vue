@@ -26,8 +26,8 @@
         <div class="vicRange"><div id="serpRange" :style="cssProps"></div></div>
       </div>
 
-      <p>Tricheur :</p>
-      <p>Canberra: -10 sur sa note</p>
+      <p class="cheat">Tricheur :</p>
+      <p class="cheat">Canberra: -10 sur sa note</p>
     </section>
 </template>
 
@@ -53,6 +53,11 @@ export default {
         height: 100%;
         background: var(--color-dark);
         border-radius: var(--radius);
+    }
+
+    .cheat {
+        color: white;
+        padding-left: 10%;
     }
 
     .leadSection h2 {
