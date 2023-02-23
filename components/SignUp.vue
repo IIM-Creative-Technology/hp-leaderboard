@@ -94,13 +94,12 @@ export default {
         .post('https://hp-api-iim.azurewebsites.net/auth/register', data)
         .then((res) => {
           const userData = res.data
-          this.$toasted.show('You have registered successfully', {
-            theme: 'primary',
+          this.$toasted.show('You have successfully signed up', {
             position: 'top-center',
             duration: 5000,
             type: 'success',
           })
-          this.$router.push('/auth/login')
+          this.$router.push('/leaderboard')
         })
     },
   },

@@ -18,6 +18,7 @@ export default {
 :root {
   --color-dark: #111212;
   --color-light: #242424;
+  --color-gray: #8A8A8A;
   --radius: 30px;
   --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
   	0 1px 2px 0 rgba(0, 0, 0, 0.06);
