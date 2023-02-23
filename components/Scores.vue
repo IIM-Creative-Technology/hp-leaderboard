@@ -26,8 +26,8 @@
         <div class="vicRange"><div id="serpRange" :style="cssProps"></div></div>
       </div>
 
-      <p class="cheat">Tricheur :</p>
-      <p class="cheat">Canberra Menthonex: -10 sur sa note</p>
+      <!-- <p class="cheat">Tricheur :</p>
+      <p class="cheat">Canberra Menthonex: -10 sur sa note</p> -->
     </section>
 </template>
 
