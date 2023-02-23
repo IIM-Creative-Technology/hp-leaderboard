@@ -15,10 +15,10 @@
           </g>
         </g>
       </svg>
-      <img v-if="houseId === 1" src="../static/assets/snake.png" alt="">
-      <img v-if="houseId === 2" src="../static/assets/eagle.png" alt="">
-      <img v-if="houseId === 3" src="../static/assets/badger.png" alt="">
-      <img v-if="houseId === 4" src="../static/assets/lion.png" alt="">
+      <img v-if="houseId === 1" src="../static/assets/snake.png" alt="snake">
+      <img v-if="houseId === 2" src="../static/assets/lion.png" alt="Lion">
+      <img v-if="houseId === 3" src="../static/assets/eagle.png" alt="eagle">
+      <img v-if="houseId === 4" src="../static/assets/badger.png" alt="Badger">
       <div class="signUpForm">
         <input type="text" placeholder="Nickname" v-model="name">
         <input type="password" placeholder="Password" v-model="password">
