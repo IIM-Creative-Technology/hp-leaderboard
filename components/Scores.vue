@@ -22,7 +22,7 @@
 
       <div class="scoresList">
         <p class="vicString">Slytherin points</p>
-        <p class="vicNumber">{{ serdaiglePoints }}</p>
+        <p class="vicNumber">{{ serpentardPoints }}</p>
         <div class="vicRange"><div id="serpRange" :style="cssProps"></div></div>
       </div>
     </section>
