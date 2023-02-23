@@ -42,6 +42,8 @@ export default {
                 houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => data.data)
             });
 
+            console.log('test')
+
             socket.on('matches', async function () {
                 matches.value = await axios.get('https://hp-api-iim.azurewebsites.net/matches').then(data => data.data)
             });
