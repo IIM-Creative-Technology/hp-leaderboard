@@ -56,12 +56,12 @@ export default {
         color: var(--color-white);
         font-size: 1.2rem;
         padding-left: 10%;
-        padding-top: 25vh;
+        padding-top: 10vh;
     }
 
     .leadSection .scoresList {
         width: 80%;
-        margin: 3.5vh auto;
+        margin: 6vh auto;
     }
 
     .leadSection .vicString {
