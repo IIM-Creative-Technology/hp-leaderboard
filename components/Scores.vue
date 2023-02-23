@@ -79,12 +79,13 @@ export default {
         height: 10px;
         background: #1E1828;
         border-radius: 10rem;
+        transition: 1s;
     }
 
     .leadSection .vicRange div {
         height: 100%;
         border-radius: 10rem;
-        transition: 0.5s;
+        transition: 1s;
     }
 
     .leadSection .vicRange #gryffRange {

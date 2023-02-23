@@ -51,6 +51,9 @@ export default {
     .podiumSection img {
         border-radius: 50em;
         width: 100%;
+        transition: 1s;
+        top: 0;
+        left: 0;
     }
 
     .podiumSection .first {
@@ -62,16 +65,16 @@ export default {
     .podiumSection .second {
         width: 80%;
         position: absolute;
-        top: 35%;
-        right: 80%;
+        top: 35% !important;
+        left: -60% !important;
         z-index: 10;
     }
 
     .podiumSection .third {
         width: 65%;
         position: absolute;
-        top: 60%;
-        left: 70%;
+        top: 60% !important;
+        left: 70% !important;
         z-index: 1;
     }
 

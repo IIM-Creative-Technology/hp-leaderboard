@@ -1,6 +1,6 @@
 <template>
     <section class="classementSection">
-        <h2>Ranking</h2>
+        <h2>Matches</h2>
         <div class="tab" id="tabHeader">
             <p class="row">House</p>
             <p class="row">Player</p>
