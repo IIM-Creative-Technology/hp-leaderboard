@@ -129,7 +129,7 @@ export default {
 
 @media only screen and (max-width: 900px) {
   .signUpMain {
-    height: 100%;
+    height: inherit;
   }
 
   .signUpMain .signUpBlock img {

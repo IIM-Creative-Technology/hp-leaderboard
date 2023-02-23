@@ -54,6 +54,10 @@ export default {
     }
 
     @media only screen and (max-width: 900px) {
+        .selectHouseMain {
+            height: inherit;
+        }
+        
         .selectHouseMain div  {
             flex-direction: column;
             align-items: center;
