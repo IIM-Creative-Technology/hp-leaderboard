@@ -2,35 +2,19 @@
     <section class="leadSection">
       <h2>TEAMS SCORES</h2>
 
-      <div class="scoresList">
-        <p class="vicString">Gryffindor points</p>
-        <p class="vicNumber">{{ gryffondorPoints }}</p>
-        <div class="vicRange"><div id="gryffRange" :style="cssProps"></div></div>
-      </div>
-
-      <div class="scoresList">
-        <p class="vicString">Hufflepuff points</p>
-        <p class="vicNumber">{{ pouffsoufflePoints }}</p>
-        <div class="vicRange"><div id="pouffRange" :style="cssProps"></div></div>
-      </div>
-
-      <div class="scoresList">
-        <p class="vicString">Ravenclaw points</p>
-        <p class="vicNumber">{{ serdaiglePoints }}</p>
-        <div class="vicRange"><div id="serdRange" :style="cssProps"></div></div>
-      </div>
-
-      <div class="scoresList">
-        <p class="vicString">Slytherin points</p>
-        <p class="vicNumber">{{ serpentardPoints }}</p>
-        <div class="vicRange"><div id="serpRange" :style="cssProps"></div></div>
+      <div class="scoresList" v-for="house in leaderboard" :key="house.id">
+        <p class="vicString">{{ house.name }} points</p>
+        <p class="vicNumber">{{ house.points }}</p>
+        <div class="vicRange"><div :id="house.id === 2 ? 'gryffRange' : house.id === 1 ? 'serpRange' : house.id === 3 ? 'serdRange' : house.id === 4 ? 'pouffRange' : undefined " :style="cssProps"></div></div>
       </div>
     </section>
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
-    props: ["serpentardPoints","serdaiglePoints","pouffsoufflePoints","gryffondorPoints"],
+    props: ["serpentardPoints","serdaiglePoints","pouffsoufflePoints","gryffondorPoints", 'houses'],
     computed: {
         cssProps() {
             return {
@@ -41,6 +25,17 @@ export default {
             }
         }
     },
+    setup(props) {
+        const leaderboard = computed(() => {
+            return props.houses?.sort((a, b) => {
+                a.points - b.points
+            }).reverse()
+        })
+
+        return {
+            leaderboard
+        }
+    }
 }
 </script>
 
