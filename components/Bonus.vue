@@ -1,6 +1,6 @@
 <template>
     <section class="bonusSection">
-     
+        <img src="../static/assets/harry-medal.png" alt="Harry medal">
     </section>
 </template>
 
@@ -11,10 +11,18 @@ export default {
 </script>
 
 <style scoped>
+
     .bonusSection {
         width: 25%;
         height: 100%;
-        background: var(--color-dark);
+        border-radius: var(--radius);
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 100;
         border-radius: var(--radius);
     }
 

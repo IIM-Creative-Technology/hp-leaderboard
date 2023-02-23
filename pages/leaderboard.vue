@@ -1,5 +1,6 @@
 <template>
     <main class="leaderboardMain">
+        <div id="potter-animation"></div>
         <div class="leaderboardSections">
             <Scores :serpentard-points="serpentardPoints" :serdaigle-points="serdaiglePoints" :pouffsouffle-points="pouffsoufflePoints" :gryffondor-points="gryffondorPoints" />
             <div class="leadRightSide">
@@ -22,11 +23,13 @@ import Classement from '../components/Classement.vue';
 import axios from 'axios';
 import { computed, ref, onMounted } from 'vue';
 import { io } from "socket.io-client";
+import bodymovin from "bodymovin";
 
 export default {
     name: "LeaderboardPage",
     components: { Scores, Podium },
     setup() {
+
         const houses = ref()
         const logs = ref()
 
@@ -36,6 +39,14 @@ export default {
         const pouffsoufflePoints = computed(() => houses.value?.find(house => house.id === 4).points)
 
         onMounted(async () => {
+            var spellAnimation = bodymovin.loadAnimation({
+            container: document.getElementById('potter-animation'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: 'https://raw.githubusercontent.com/abrahamrkj/facebook-spell/master/data.json'
+            })
+
             const socket = io('https://hp-api-iim.azurewebsites.net');
 
             socket.on('houses', async function () {
@@ -44,6 +55,8 @@ export default {
 
             socket.on('matches', async function () {
                 logs.value = await axios.get('https://hp-api-iim.azurewebsites.net/match-logs').then(data => data.data)
+                spellAnimation.stop();
+                spellAnimation.play();
             });
 
             houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => {
@@ -87,6 +100,17 @@ export default {
     *::after {
         padding: 0;
         margin: 0;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    #potter-animation {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
     }
 
     .leaderboardMain {
