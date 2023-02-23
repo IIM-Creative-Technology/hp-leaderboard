@@ -2,8 +2,7 @@
     <main class="leaderboardMain" id="leaderboardMainn">
         <div id="potter-animation"></div>
         <div class="leaderboardSections">
-            <Scores :serpentard-points="serpentardPoints" :serdaigle-points="serdaiglePoints" :pouffsouffle-points="pouffsoufflePoints" :gryffondor-points="gryffondorPoints" :houses="houses
-            "/>
+            <Scores :serpentard-points="serpentardPoints" :serdaigle-points="serdaiglePoints" :pouffsouffle-points="pouffsoufflePoints" :gryffondor-points="gryffondorPoints" />
             <div class="leadRightSide">
                 <Podium :houses="houses"/>
                 <div class="leadBottomRight">
