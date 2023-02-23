@@ -7,18 +7,18 @@
             <p class="row">Game</p>
             <p class="row">Points</p>
         </div>
-        <div class="tab" id="tabLine" v-for="match in matches" :key="match.id">
-            <p class="row">Gryffindor</p>
-            <p class="row">Nvcq</p>
-            <p class="row">{{ match.game }}</p>
-            <p class="row">+100</p>
+        <div class="tab" id="tabLine" v-for="log in logs?.reverse()" :key="log.id">
+            <p class="row">{{ log.user.house.name }}</p>
+            <p class="row">{{ log.user.name }}</p>
+            <p class="row">{{ log.match.game }}</p>
+            <p class="row">+{{ log.points }}</p>
         </div>
     </section>
 </template>
 
 <script>
 export default {
-    props: ['matches']
+    props: ['logs']
 }
 </script>
 

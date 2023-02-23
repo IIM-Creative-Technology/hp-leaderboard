@@ -6,7 +6,7 @@
                 <Podium :houses="houses"/>
                 <div class="leadBottomRight">
                     <Bonus/>
-                    <Classement :matches="matches"/>
+                    <Classement :logs="logs"/>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@ export default {
     components: { Scores, Podium },
     setup() {
         const houses = ref()
-        const matches = ref()
+        const logs = ref()
 
         const serpentardPoints = computed(() => houses.value?.find(house => house.id === 1).points)
         const gryffondorPoints = computed(() => houses.value?.find(house => house.id === 2).points)
@@ -43,18 +43,18 @@ export default {
             });
 
             socket.on('matches', async function () {
-                matches.value = await axios.get('https://hp-api-iim.azurewebsites.net/matches').then(data => data.data)
+                logs.value = await axios.get('https://hp-api-iim.azurewebsites.net/match-logs').then(data => data.data)
             });
 
             houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => {
                 return data.data
             })
-            matches.value = await axios.get('https://hp-api-iim.azurewebsites.net/matches').then(data => data.data)
+            logs.value = await axios.get('https://hp-api-iim.azurewebsites.net/match-logs').then(data => data.data)
         })
 
         return {
             houses,
-            matches,
+            logs,
             serpentardPoints,
             gryffondorPoints,
             serdaiglePoints,
