@@ -36,7 +36,7 @@ export default {
         const pouffsoufflePoints = computed(() => houses.value?.find(house => house.id === 4).points)
 
         onMounted(async () => {
-            const socket = io('http://localhost:8080');
+            const socket = io('https://hp-api-iim.azurewebsites.net');
 
             socket.on('houses', async function () {
                 houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => data.data)
