@@ -27,7 +27,7 @@
       </div>
 
       <p class="cheat">Tricheur :</p>
-      <p class="cheat">Canberra: -10 sur sa note</p>
+      <p class="cheat">Canberra Menthonex: -10 sur sa note</p>
     </section>
 </template>
 
