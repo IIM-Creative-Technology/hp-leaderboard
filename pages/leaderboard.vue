@@ -3,10 +3,10 @@
         <div class="leaderboardSections">
             <Scores :serpentard-points="serpentardPoints" :serdaigle-points="serdaiglePoints" :pouffsouffle-points="pouffsoufflePoints" :gryffondor-points="gryffondorPoints" />
             <div class="leadRightSide">
-                <Podium/>
+                <Podium :houses="houses"/>
                 <div class="leadBottomRight">
                     <Bonus/>
-                    <Classement/>
+                    <Classement :matches="matches"/>
                 </div>
             </div>
         </div>
@@ -20,30 +20,47 @@ import Podium from '../components/Podium.vue';
 import Bonus from '../components/Bonus.vue';
 import Classement from '../components/Classement.vue';
 import axios from 'axios';
-
+import { computed, ref, onMounted } from 'vue';
+import { io } from "socket.io-client";
 
 export default {
     name: "LeaderboardPage",
-    data() {
+    components: { Scores, Podium },
+    setup() {
+        const houses = ref()
+        const matches = ref()
+
+        const serpentardPoints = computed(() => houses.value?.find(house => house.id === 1).points)
+        const gryffondorPoints = computed(() => houses.value?.find(house => house.id === 2).points)
+        const serdaiglePoints = computed(() => houses.value?.find(house => house.id === 3).points)
+        const pouffsoufflePoints = computed(() => houses.value?.find(house => house.id === 4).points)
+
+        onMounted(async () => {
+            const socket = io('https://hp-api-iim.azurewebsites.net');
+
+            socket.on('houses', async function () {
+                houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => data.data)
+            });
+
+            socket.on('matches', async function () {
+                matches.value = await axios.get('https://hp-api-iim.azurewebsites.net/matches').then(data => data.data)
+            });
+
+            houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => {
+                return data.data
+            })
+            matches.value = await axios.get('https://hp-api-iim.azurewebsites.net/matches').then(data => data.data)
+        })
+
         return {
-            serpentardPoints: null,
-            serdaiglePoints: null,
-            pouffsoufflePoints: null,
-            gryffondorPoints: null,
-        };
-    },
-    mounted: async function() {
-        try {
-            const response = await axios.get('https://hp-api-iim.azurewebsites.net/houses');
-            this.serpentardPoints = response.data[0].points;
-            this.serdaiglePoints = response.data[1].points;
-            this.pouffsoufflePoints = response.data[2].points;
-            this.gryffondorPoints = response.data[3].points;
-        } catch (error) {
-            console.error(error);
+            houses,
+            matches,
+            serpentardPoints,
+            gryffondorPoints,
+            serdaiglePoints,
+            pouffsoufflePoints
         }
-    },
-    components: { Scores, Podium }
+    }
 }
 </script>
 
