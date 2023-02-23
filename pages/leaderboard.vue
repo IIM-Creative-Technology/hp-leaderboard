@@ -49,6 +49,7 @@ export default {
             houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => {
                 return data.data
             })
+            
             logs.value = await axios.get('https://hp-api-iim.azurewebsites.net/match-logs').then(data => data.data)
         })
 

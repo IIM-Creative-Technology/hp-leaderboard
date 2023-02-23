@@ -7,7 +7,7 @@
             <p class="row">Game</p>
             <p class="row">Points</p>
         </div>
-        <div class="tab" id="tabLine" v-for="log in logs?.reverse()" :key="log.id">
+        <div class="tab" id="tabLine" v-for="log in logsReversed" :key="log.id">
             <p class="row">{{ log.user.house.name }}</p>
             <p class="row">{{ log.user.name }}</p>
             <p class="row">{{ log.match.game }}</p>
@@ -18,7 +18,12 @@
 
 <script>
 export default {
-    props: ['logs']
+    props: ['logs'],
+    computed: {
+        logsReversed() {
+            return this.logs?.reverse()
+        }
+    }
 }
 </script>
 
