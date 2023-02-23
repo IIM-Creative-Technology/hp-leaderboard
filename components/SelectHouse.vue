@@ -52,4 +52,15 @@ export default {
         opacity: 100%;
         transition: 0.6s;
     }
+
+    @media only screen and (max-width: 900px) {
+        .selectHouseMain div  {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .selectHouseMain img {
+            margin: 5vh 0;
+        }
+    }
 </style>

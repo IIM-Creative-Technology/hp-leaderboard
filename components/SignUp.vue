@@ -1,50 +1,8 @@
 <template>
-    <!-- <div style="background-image:../static/assets/hp.jpg ;">
-        <form @submit="register()" enctype="multipart/form-data" method="post">
-          <div class="fields">
-            <label for="nickname"><strong>Pseudo</strong></label>
-            <input type="text" name="nickname" v-model="nickname" />
-
-            <label for="password"><strong>Password</strong></label>
-            <input type="password" name="password" v-model="password" />
-            <span class="forgot">
-              Use Uppercase, Lowercase and Numeric characters*
-            </span>
-          </div>
-
-          <div class="btn">
-            <button type="button" @click="register()">
-              Sign Up
-            </button>
-          </div>
-        </form>
-    </div> -->
-
-        <!-- <form @submit="register()" enctype="multipart/form-data" method="post" name="signin" class="form">
-          <div class="input-control">
-            <label for="name" class="input-label" hidden>Nickname</label>
-            <input type="text" id="nickname" v-model="name" :class="{error : error === 'name'}" class="input-field" placeholder="Nickname">
-          </div>
-          <div class="input-control">
-            <label for="password" class="input-label" hidden>Password</label>
-            <input type="password" v-model="password" id="password" class="input-field" placeholder="Password">
-          </div>
-          <div class="input-control">
-            <div class="select" :class="{houseSelected : houseId === 1, houseUnselected : houseId !== null && houseId !== 1}" @click="houseId === 1 ? houseId = null : houseId = 1"><img src="../static/assets/snake.png"></div>
-            <div class="select" :class="{houseSelected : houseId === 2, houseUnselected : houseId !== null && houseId !== 2}" @click="houseId === 2 ? houseId = null : houseId = 2"><img src="../static/assets/lion.png"></div>
-          </div>
-          <div class="input-control">
-            <div class="select" :class="{houseSelected : houseId === 3, houseUnselected : houseId !== null && houseId !== 3}" @click="houseId === 3 ? houseId = null : houseId = 3"><img src="../static/assets/badger.png"></div>
-            <div class="select" :class="{houseSelected : houseId === 4, houseUnselected : houseId !== null && houseId !== 4}" @click="houseId === 4 ? houseId = null : houseId = 4"><img src="../static/assets/eagle.png"></div>
-          </div>
-          <div class="input-control">
-            <button type="button" class="input-submit" style="margin: auto;" @click="register()">Sign Up</button>
-          </div>
-        </form> -->
 
   <main class="signUpMain">
     <div class="signUpBlock">
-      <svg fill="#242424" @click="$emit('select', null)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      <svg fill="white" @click="$emit('select', null)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
         width="50px" height="50px" viewBox="0 0 299.021 299.021"
         xml:space="preserve">
         <g>
@@ -169,4 +127,28 @@ export default {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 900px) {
+  .signUpMain .signUpBlock img {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10vh;
+  }
+
+  .signUpMain .signUpBlock {
+    flex-direction: column;
+    background: none;
+    margin: 0 auto;
+    height: inherit;
+  }
+
+  .signUpMain {
+    align-items: none;
+  }
+
+  .signUpMain .signUpBlock .signUpForm {
+    margin: 0 auto;
+  }
+
+
+}
 </style>
