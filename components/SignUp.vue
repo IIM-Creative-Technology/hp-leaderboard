@@ -130,8 +130,7 @@ export default {
 @media only screen and (max-width: 900px) {
   .signUpMain .signUpBlock img {
     width: 50%;
-    margin: auto;
-    margin-bottom: 10vh;
+    margin: 10vh auto;
   }
 
   .signUpMain .signUpBlock {
@@ -139,6 +138,7 @@ export default {
     background: none;
     margin: 0 auto;
     height: inherit;
+    padding: 0;
   }
 
   .signUpMain {
@@ -147,8 +147,9 @@ export default {
 
   .signUpMain .signUpBlock .signUpForm {
     margin: 0 auto;
+    width: 50%;
+    font-size: 0.8rem;
   }
-
 
 }
 </style>
