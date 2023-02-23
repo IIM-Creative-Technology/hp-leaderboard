@@ -25,6 +25,9 @@
         <p class="vicNumber">{{ serpentardPoints }}</p>
         <div class="vicRange"><div id="serpRange" :style="cssProps"></div></div>
       </div>
+
+      <p>Tricheur :</p>
+      <p>Canberra: -10 sur sa note</p>
     </section>
 </template>
 
