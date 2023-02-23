@@ -61,6 +61,7 @@ export default {
 
         .selectHouseMain img {
             margin: 5vh 0;
+            width: 50vw;
         }
     }
 </style>
