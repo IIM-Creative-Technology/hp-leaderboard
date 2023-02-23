@@ -1,5 +1,5 @@
 <template>
-    <main class="leaderboardMain">
+    <main class="leaderboardMain" id="leaderboardMainn">
         <div id="potter-animation"></div>
         <div class="leaderboardSections">
             <Scores :serpentard-points="serpentardPoints" :serdaigle-points="serdaiglePoints" :pouffsouffle-points="pouffsoufflePoints" :gryffondor-points="gryffondorPoints" />
@@ -39,13 +39,15 @@ export default {
         const pouffsoufflePoints = computed(() => houses.value?.find(house => house.id === 4).points)
 
         onMounted(async () => {
-            var spellAnimation = bodymovin.loadAnimation({
-            container: document.getElementById('potter-animation'),
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            path: 'https://raw.githubusercontent.com/abrahamrkj/facebook-spell/master/data.json'
-            })
+                var spellAnimation = bodymovin.loadAnimation({
+                container: document.getElementById('potter-animation'),
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: 'https://raw.githubusercontent.com/abrahamrkj/facebook-spell/master/data.json'
+            });
+
+            document.querySelector("#potter-animation").style.display = "none";
 
             const socket = io('https://hp-api-iim.azurewebsites.net');
 
@@ -55,8 +57,14 @@ export default {
 
             socket.on('matches', async function () {
                 logs.value = await axios.get('https://hp-api-iim.azurewebsites.net/match-logs').then(data => data.data)
+
+                document.querySelector("#potter-animation").style.display = "block";
                 spellAnimation.stop();
                 spellAnimation.play();
+
+                setTimeout(() => {
+                    document.querySelector("#potter-animation").style.display = "none";
+                }, 3000);
             });
 
             houses.value = await axios.get('https://hp-api-iim.azurewebsites.net/houses').then(data => {
@@ -101,7 +109,7 @@ export default {
         padding: 0;
         margin: 0;
     }
-
+ 
     body {
         overflow: hidden;
     }

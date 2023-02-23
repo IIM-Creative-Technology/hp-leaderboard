@@ -60,22 +60,25 @@ export default {
         width: 100%;
         position: relative;
         z-index: 100;
+        border: 4px solid gold;
     }
 
     .podiumSection .second {
-        width: 80%;
+        width: 75%;
         position: absolute;
-        top: 35% !important;
+        top: 30% !important;
         left: -60% !important;
         z-index: 10;
+        border: 4px solid silver;
     }
 
     .podiumSection .third {
-        width: 65%;
+        width: 50%;
         position: absolute;
         top: 60% !important;
-        left: 70% !important;
+        left: 80% !important;
         z-index: 1;
+        border: 4px solid #CD7F32;
     }
 
     .podiumSection .none {

@@ -33,7 +33,7 @@ export default {
         height: 100%;
         background: var(--color-dark);
         border-radius: var(--radius);
-        overflow-y: auto;
+        overflow-y: scroll !important;
     }
 
     /* // scrollbar style */
